@@ -44,11 +44,12 @@
 
     <div class="text-left mt-5 font-sans font-bold text-3xl"> 
         <h3 class="ml-10 text-white">G.O.A.T Movies & Series ></h3>
-        <div class="flex mt-5 overflow-y-scroll hs">
-        @foreach($movies as $movie)
-            <img src="{{$movie->cover}}" class="ml-8 w-64 h-96 rounded-lg border-2 border-white hover:brightness-150 hover:grayscale hover:invert" alt="Cruella">
-       @endforeach
         </div>
+        <div class="flex p-5 mt-5 overflow-y-scroll hs">
+        @foreach($movies as $movie)
+                <img class="w-64 h-96 rounded-lg border-2 border-white m-2 object-cover transition-transform transform duration-300 hover:scale-95" src="{{$movie->cover}}"/>
+        @endforeach
+        </div> 
         <footer class="bg-white shadow-sm dark:bg-gray-900">
         <div class="w-full max-w-screen-xl mx-auto p-4 mt-10">
             <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 Meatflix.co.id All Rights Reserved.</span>

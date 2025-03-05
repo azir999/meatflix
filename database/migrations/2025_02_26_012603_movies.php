@@ -10,11 +10,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('movies', function (Blueprint $table) {
-            $table->id('movies_id');
+            $table->id('id');
             $table->string('cover');
             $table->string('title');
             $table->string('actor_actress');
             $table->string('synopsis');
+            $table->timestamps('');
+
         });
     }
     public function down(): void
