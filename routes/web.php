@@ -7,9 +7,10 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\ProducersController;
 
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::view('/admin', [LoginController::class, 'admin']);
 
@@ -25,8 +26,26 @@ Route::get('admin', [AuthController::class, 'admin']);
 
 Route::get('admin', [MoviesController::class, 'index']); 
 
-Route::get('/movies', [MoviesController::class, 'index'])->name('movies.index');
+Route::get('/movie', [MoviesController::class, 'index'])->name('movies.index');
 
 Route::delete('/movies/{id}', [MoviesController::class, 'destroy'])->name('movies.destroy');
 
-Route::post('admin', [MoviesController::class, 'store'])->name('movies.store');
+Route::post('admin/create', [MoviesController::class, 'store'])->name('movies.store');
+
+Route::post('admin/{id}', [MoviesController::class, 'update'])->name('movies.update');
+
+Route::get('producers', [ProducersController::class, 'index']);
+
+Route::get('/producers', [ProducersController::class, 'index'])->name('producers.index');
+
+Route::delete('producers/{id}', [ProducersController::class, 'destroy'])->name('producers.destroy');
+
+Route::post('producers/create', [ProducersController::class, 'store'])->name('producers.store');
+
+Route::post('producers/{id}', [ProducersController::class, 'update'])->name('producers.update');
+
+Route::get('show/{id}', [MoviesController::class, 'show'])->name('producers.show');
+
+Route::get('show', [ProducersController::class, 'index']);
+
+

@@ -19,13 +19,20 @@
 <body class="bg-black">
     <header>
         <nav class="bg-white border-gray-200 dark:bg-gray-900">
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 -mt-2">
                 <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <span class="fa-solid fa-drumstick-bite fa-flip text-5xl text-red-500" style="--fa-animation-duration: 2.5s;"></span>
                     <h1 class="font-sans text-5xl font-bold text-left text-red-500 italic select-none">
                         Meat <span class="text-3xl font-bold text-left text-white -ml-3">FLIX.id</span>
                     </h1>
+                    
                 </a>
+            </div>
+             <!-- Modal toggle -->
+            <div class="flex flex-row-reverse -mt-15">
+            <button data-modal-target="login-modal" data-modal-toggle="login-modal" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="button">
+            Masuk
+            </button>
             </div>
         </nav>   
     </header>
@@ -35,20 +42,119 @@
         <p class="text-3xl font-sans text-center font-bold not-italic select-none">
             Tontonlah movies terbaik dalam hidup anda dengan meatflix.id,</br>harga mulai dari Rp.14.000 / minggu diskon 50%
         </p>
+
+       
         <div class="flex justify-center mt-10">
-        <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-        <a href="{{('/login')}}" class="focus:outline-none text-white font-bold bg-red-500 hover:bg-red-800 focus:ring-4 focus:ring-red-300 rounded-lg text-sm px-10 py-5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Masuk</a>      
+                <form action="{{ route('home') }}" method="GET">
+                    <input class="placeholder:text-gray-500 placeholder:italic text-white bg-black p-2 border-2 rounded-lg" placeholder="Masukan Email Anda...." type="text">
+                    <a href="{{url('https://www.netflix.com/signup/password?locale=id-ID')}}" type="submit" 
+                            class="focus:outline-none text-white font-bold bg-red-500 hover:bg-red-800 focus:ring-4 focus:ring-red-300 rounded-lg text-sm px-5 py-3 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                        Kirim
+                    </a>
+                </form>
         </div>
-        </div>
+
+        <!-- Main modal -->
+        <div id="login-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            Masuk ke admin meatflix.id
+                        </h3>
+                        <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="login-modal">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="p-4 md:p-5">
+                    @session('error')
+                        <div id="alert-border-2" class="flex items-center p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800 mt-5" role="alert">
+                        <svg class="shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                        </svg>
+                        <div class="ms-3 text-sm font-medium">
+                        Email atau Password Kamu Salah!
+                        </div>
+                        </div>
+                    @endsession
+                        <form class="space-y-4" method="POST" action="{{ route('login.post') }}">
+                        @csrf
+                            <div>
+                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                                <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@gmail.com" required />
+                            </div>
+                            <div>
+                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                                <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+                            </div>
+                            <div class="flex justify-between">
+                            <button type="submit" class="w-full focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Masuk</button>
+                            </div>
+                         </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
     </div>
 
     <div class="text-left mt-5 font-sans font-bold text-3xl"> 
         <h3 class="ml-10 text-white">G.O.A.T Movies & Series ></h3>
         </div>
         <div class="flex p-5 mt-5 overflow-y-scroll hs">
+        
         @foreach($movies as $movie)
-                <img class="w-64 h-96 rounded-lg border-2 border-white m-2 object-cover transition-transform transform duration-300 hover:scale-95" src="{{$movie->cover}}"/>
-        @endforeach
+        <div class="flex flex-col items-center m-2">
+            <img class="w-64 h-96 rounded-lg border-2 border-white object-cover transition-transform transform duration-300 hover:scale-95" src="{{ $movie->cover }}" alt="{{ $movie->title }} cover"/>
+                
+            <!-- Modal toggle -->
+            <button data-modal-target="info_modal_{{$movie->id}}" data-modal-toggle="info_modal_{{$movie->id}}" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-30 py-2.5 text-center mt-5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                Info
+            </button>
+    </div>
+              <!-- Main modal -->
+            <div id="info_modal_{{$movie->id}}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-full max-w-2xl max-h-full">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                        <!-- Modal header -->
+                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                              {{$movie->title}}
+                            </h3>
+                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="info_modal_{{$movie->id}}">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                        </div>
+                        <!-- Modal body -->
+                       <div class="flex flex-col p-4 md:p-5 space-y-4">
+                        <div class="flex ml-40 w-64 h-96 m-5">
+                            <img class="w-full h-full object-cover rounded-lg" src="{{$movie->cover}}" alt="Movie Cover"/>
+                        </div>
+                        <div class="text-xl leading-relaxed text-white dark:text-gray-400 mt-5 text-justify">
+                        Produser:
+                            <a href="{{ route('producers.show', $movie->producers->id) }}" class="hover:text-red-500">
+                            {{$movie->producers->name}}
+                            </a>
+                            </br> Crew: {{$movie->actor_actress}}
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{$movie->synopsis}}
+                            </p>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+                @endforeach
         </div> 
         <footer class="bg-white shadow-sm dark:bg-gray-900">
         <div class="w-full max-w-screen-xl mx-auto p-4 mt-10">
@@ -57,4 +163,5 @@
     </footer>
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </html>

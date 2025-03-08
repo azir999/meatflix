@@ -13,23 +13,13 @@ use Illuminate\Http\RedirectResponse;
   
 class AuthController extends Controller
 {
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
+    
     public function index(): View
     {
-        return view('auth.login');
+        return view('/');
 
     }  
 
-
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
     public function postLogin(Request $request): RedirectResponse
     {
         $request->validate([
@@ -39,24 +29,20 @@ class AuthController extends Controller
    
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('admin')
-                        ->withSuccess('Login Berhasil');
+            return redirect('admin')
+                        ->withSuccess('');
         }
   
-        return redirect("login")->withError('Email atau password kamu salah');
+        return redirect("/")->withError('');
     }
-      /**
-     * Write code on Method
-     *
-     * @return response()
-     */
+      
     public function admin()
     {
         if(Auth::check()){
             return view('admin');
         }
   
-        return redirect("login")->withSuccess('Kamu tidak punya akses');
+        return redirect("/")->withSuccess('Kamu tidak punya akses');
     }
     
     
