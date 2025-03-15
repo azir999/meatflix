@@ -24,17 +24,18 @@ composer install
 ```bash
 php artisan migrate --seed
 ```
-
-4. Get key
-
-```bash
-php artisan key:generate
-```
-5. Clone env
+4. Clone env
 
 ```bash
 cp .env.example .env
 ```
+
+5. Get key
+
+```bash
+php artisan key:generate
+```
+
 6. Run css
 
 ```bash
