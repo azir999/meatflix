@@ -5,7 +5,9 @@
     <link rel="icon" type="image/x-icon" href="/images/drumstick-bite-solid.svg">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="/resources/css/app.css">
@@ -29,8 +31,8 @@
                 </a>
             </div>
              <!-- Modal toggle -->
-            <div class="flex flex-row-reverse -mt-15">
-            <button data-modal-target="login-modal" data-modal-toggle="login-modal" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="button">
+            <div class="flex flex-row-reverse -mt-10">
+            <button data-modal-target="login-modal" data-modal-toggle="login-modal" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 -mt-5 mb-5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="button">
             Masuk
             </button>
             </div>
@@ -103,20 +105,25 @@
         </div> 
     </div>
 
-    <div class="text-left mt-5 font-sans font-bold text-3xl"> 
-        <h3 class="ml-10 text-white">G.O.A.T Movies & Series ></h3>
+    <div class="text-left mt-10 font-sans font-bold text-3xl"> 
+    <h3 class="ml-10 text-white">G.O.A.T Movies & Series ></h3>
         </div>
-        <div class="flex p-5 mt-5 overflow-y-scroll hs">
-        
-        @foreach($movies as $movie)
-        <div class="flex flex-col items-center m-2">
-            <img class="w-64 h-96 rounded-lg border-2 border-white object-cover transition-transform transform duration-300 hover:scale-95" src="{{ $movie->cover }}" alt="{{ $movie->title }} cover"/>
-                
-            <!-- Modal toggle -->
-            <button data-modal-target="info_modal_{{$movie->id}}" data-modal-toggle="info_modal_{{$movie->id}}" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-30 py-2.5 text-center mt-5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-                Info
-            </button>
-    </div>
+        <div class="flex overflow-x-auto p-5 mt-5 space-x-4 hs">
+            @foreach($movies as $movie)
+            <div class="flex flex-col items-center m-2">
+                <img 
+                    class="w-64 h-96 rounded-lg border-2 border-white object-cover transition duration-300 hover:scale-95" 
+                    src="{{ $movie->cover }}" 
+                    alt="{{ $movie->title }} cover"
+                />
+                <!-- Modal toggle -->
+                <button 
+                    data-modal-target="info_modal_{{$movie->id}}" 
+                    data-modal-toggle="info_modal_{{$movie->id}}" 
+                    class="block w-64 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2.5 text-center mt-5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Info
+                </button>
+            </div>
               <!-- Main modal -->
             <div id="info_modal_{{$movie->id}}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                 <div class="relative p-4 w-full max-w-2xl max-h-full">

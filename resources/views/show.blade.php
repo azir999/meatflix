@@ -5,6 +5,7 @@
     <link rel="icon" type="image/x-icon" href="/images/drumstick-bite-solid.svg">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
@@ -17,7 +18,7 @@
     </style>
 </head>
 <body class="bg-black">
-    <header>
+<header>
         <nav class="bg-white border-gray-200 dark:bg-gray-900">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 -mt-2">
                 <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -25,15 +26,18 @@
                     <h1 class="font-sans text-5xl font-bold text-left text-red-500 italic select-none">
                         Meat <span class="text-3xl font-bold text-left text-white -ml-3">FLIX.id</span>
                     </h1>
+                    
                 </a>
             </div>
-            <div class="flex flex-row-reverse -mt-15">
-            <a href="{{ route('home') }}" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                Balik
+             <!-- Modal toggle -->
+            <div class="flex flex-row-reverse -mt-10">
+            <a href="{{ route('home') }}" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 -mt-5 mb-5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">     
+            Balik
             </a>
             </div>
         </nav>   
     </header>
+
 
     <!-- MAIN GRID -->
     <div class="grid grid-cols-2 bg-gray-800 m-10 p-5 rounded-lg">
