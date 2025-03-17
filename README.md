@@ -71,3 +71,7 @@ Im a
 # Use Case Diagram 
 
 ![usecasemeatflix](usecasemeatflix.png)
+
+# Class Diagram 
+
+![classmeatflix](diagramclassmeatflix.png)
