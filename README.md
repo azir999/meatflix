@@ -75,3 +75,7 @@ Im a
 # Class Diagram 
 
 ![classmeatflix](diagramclassmeatflix.png)
+
+# Activity Diagram
+
+![activitymeat](activitydiagram.png)
