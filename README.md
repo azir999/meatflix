@@ -68,14 +68,14 @@ Im a
 
 ## enjoy 😁
 
-# Use Case Diagram 
+# ⚒️ Use Case Diagram 
 
 ![usecasemeatflix](usecasemeatflix.png)
 
-# Class Diagram 
+# 📚 Class Diagram 
 
 ![classmeatflix](diagramclassmeatflix.png)
 
-# Activity Diagram
+# 🏃🏻 Activity Diagram
 
 ![activitymeat](activitydiagram.png)
