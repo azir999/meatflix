@@ -67,3 +67,7 @@ Im a
 ![bird](https://i.ibb.co.com/BVNq16Jc/Screenshot-2025-03-14-133639.png)
 
 ## enjoy 😁
+
+# Use Case Diagram 
+
+![usecasemeatflix](usecasemeatflix.png)
