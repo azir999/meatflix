@@ -63,6 +63,7 @@ password
 Im a
 [bird...](https://www.github.com/azir999)
 
+[pinguincode](https://media.giphy.com/media/1vlBgKjXEz1jTtsuiH/giphy.gif?cid=790b7611eg6xto97ardjj93qkzzqh8ndgo8x9mk7dl4qjp8u&ep=v1_gifs_search&rid=giphy.gif&ct=g)
 
 ![bird](https://i.ibb.co.com/BVNq16Jc/Screenshot-2025-03-14-133639.png)
 
